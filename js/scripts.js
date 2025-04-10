@@ -1,68 +1,21 @@
-const rulesElement = document.getElementById('rules');
-const modalElement = document.getElementById('modal');
-
+//localido el padre de los elementos que le he dado un id
 const iconsElement = document.getElementById('icons');
-const resultPcElement = document.getElementById('resultPc');
-const resultUserElement = document.getElementById('resultUser');
+
+//guardo en un array las opciones que tiene el user y el pc
 const pcOptions = ['scissors', 'paper', 'rock'];
+//guardo una variable para la eleccion del user
 let userChoice;
+//variable para la eleccion del pc
 let pcChoice;
+//variable para mostrar en el contador de user
 let counterUser = 0;
+//variable para mostrar en el contador de pc
 let counterPc = 0;
 
-const gameRules = {
-  paper: {
-    rock: true,
-    scissors: false
-  },
-  rock: {
-    scissors: true,
-    paper: false
-  },
-  scissors: {
-    paper: true,
-    rock: false
-  }
+const getUserOption = event => {
+  userChoice = event.target.dataset.icon; // y ya
+
+  console.log(event.target.dataset.icon); // pillo el dato con el data y . el nombre que le haya dado
 };
 
-const updateScore = () => {
-  resultUserElement.textContent = counterUser;
-  resultPcElement.textContent = counterPc;
-};
-
-const checkWinner = () => {
-  if (userChoice === pcChoice) {
-    resultTextElement.textContent = 'EMPATE';
-    return;
-  }
-
-  console.log(userChoice, pcChoice);
-  updateScore();
-};
-
-const setPcChoice = () => {
-  const randomPosition = Math.floor(Math.random() * pcOptions.length);
-
-  pcChoice = pcOptions[randomPosition];
-  checkWinner();
-};
-
-const setUserChoice = event => {
-  if (event.target.id === 'icons') {
-    return;
-  }
-  userChoice = event.target.dataset.icon;
-  setPcChoice();
-};
-
-const showModal = () => {
-  modalElement.classList.add('modalRules-show');
-};
-
-const hideModal = () => {
-  modalElement.classList.remove('modalRules-show');
-};
-
-iconsElement.addEventListener('click', setUserChoice);
-rulesElement.addEventListener('click', showModal);
-modalElement.addEventListener('click', hideModal);
+iconsElement.addEventListener('click', getUserOption);
