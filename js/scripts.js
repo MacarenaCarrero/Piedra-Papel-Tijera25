@@ -12,6 +12,8 @@ let counterUser = 0;
 //variable para mostrar en el contador de pc
 let counterPc = 0;
 
+const getPcOptions = () => {};
+
 const getUserOption = event => {
   userChoice = event.target.dataset.icon; // y ya
 
@@ -19,3 +21,4 @@ const getUserOption = event => {
 };
 
 iconsElement.addEventListener('click', getUserOption);
+iconsElement.addEventListener('click', pcChoice);
