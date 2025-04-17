@@ -1,3 +1,4 @@
+const rootStyles = document.documentElement.style;
 //localido el padre de los elementos que le he dado un id
 const iconsElement = document.getElementById('icons');
 //counters
